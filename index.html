@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <title>MongoDB CRUD Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>MongoDB CRUD Example</h1>
+<body class="bg-gray-900 text-white flex flex-col items-center min-h-screen py-10">
+
+    <h1 class="text-3xl font-bold mb-6">Project-1 (Fullstack)</h1>
     
-    <button onclick="createRandomString()">Create Random String</button>
-    <button onclick="fetchStrings()">View All Strings</button>
-    <button onclick="deleteRandomString()">Delete Random String</button>
-    
-    <h2>Stored Strings:</h2>
-    <ul id="stringList"></ul>
+    <div class="flex gap-4 mb-6">
+        <button onclick="createRandomString()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md">Create Random String</button>
+        <button onclick="fetchStrings()" class="px-5 py-2 bg-green-500 hover:bg-green-600 rounded-lg shadow-md">View All Strings</button>
+        <button onclick="deleteRandomString()" class="px-5 py-2 bg-red-500 hover:bg-red-600 rounded-lg shadow-md">Delete Random String</button>
+    </div>
+
+    <h2 class="text-xl font-semibold mb-4">Stored Strings:</h2>
+    <ol id="stringList" class="bg-gray-800 p-4 rounded-lg shadow-md w-96 text-left list-decimal list-inside"></ol>
 
     <script>
         const BASE_URL = "https://project-1-backend-cje3.onrender.com"; // Updated URL
@@ -36,6 +40,7 @@
             data.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = `${item.value} (ID: ${item._id})`;
+                li.className = "bg-gray-700 px-4 py-2 my-1 rounded-md";
                 list.appendChild(li);
             });
         }
@@ -55,5 +60,6 @@
             fetchStrings();
         }
     </script>
+
 </body>
 </html>
